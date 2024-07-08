@@ -4,11 +4,13 @@
 #include "Hoos/Events/ApplicationEvent.h"
 #include "Hoos/Log.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Hoos {
 
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -16,17 +18,13 @@ namespace Hoos {
 
 	}
 
-	void Application::Run() {
-		WindowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategoryApplication))
+	void Application::Run() 
+	{
+		while (m_Running) 
 		{
-			HS_TRACE(e);
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
 		}
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			HS_TRACE(e);
-		}
-
-		while (true);
 	}
 }

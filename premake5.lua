@@ -10,13 +10,19 @@ workspace "Hoos"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Hoos/vendor/GLFW/include"
+
+include "Hoos/vendor/GLFW"
+
 project "Hoos"
 	location "Hoos"
 	kind "SharedLib"
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-init/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "hspch.h"
 	pchsource "Hoos/src/hspch.cpp"
@@ -30,7 +36,14 @@ project "Hoos"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links 
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -67,7 +80,7 @@ project "Sandbox"
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-init/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{

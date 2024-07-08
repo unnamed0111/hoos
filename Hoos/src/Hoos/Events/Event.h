@@ -1,5 +1,6 @@
 #pragma once
 
+#include "hspch.h"
 #include "Hoos/Core.h"
 
 namespace Hoos {

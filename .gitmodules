@@ -1,3 +1,6 @@
 [submodule "Hoos/vendor/spdlog"]
 	path = Hoos/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "Hoos/vendor/GLFW"]
+	path = Hoos/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
