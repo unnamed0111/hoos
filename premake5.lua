@@ -8,15 +8,19 @@ workspace "Hoos"
 		"Dist"
 	}
 
+	startproject "Sandbox"
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Hoos/vendor/GLFW/include"
 IncludeDir["Glad"] = "Hoos/vendor/Glad/include"
+IncludeDir["ImGui"] = "Hoos/vendor/imgui"
 
 include "Hoos/vendor/GLFW"
 include "Hoos/vendor/Glad"
+include "Hoos/vendor/imgui"
 
 project "Hoos"
 	location "Hoos"
@@ -40,13 +44,15 @@ project "Hoos"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links 
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

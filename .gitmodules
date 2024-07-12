@@ -4,3 +4,6 @@
 [submodule "Hoos/vendor/GLFW"]
 	path = Hoos/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Hoos/vendor/imgui"]
+	path = Hoos/vendor/imgui
+	url = https://github.com/TheCherno/imgui
