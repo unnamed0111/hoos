@@ -8,8 +8,8 @@ int main(int argc, char** argv)
 {
 	Hoos::Log::Init();
 	HS_CORE_WARN("Initialized Log!");
-	int a = 5;
-	HS_INFO("Hello! Var={0}", a);
+	/*int a = 5;
+	HS_INFO("Hello! Var={0}", a);*/
 
 
 	auto app = Hoos::CreateApplication();

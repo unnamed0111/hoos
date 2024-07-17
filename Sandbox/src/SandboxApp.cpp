@@ -10,12 +10,20 @@ public:
 
 	void OnUpdate() override
 	{
-		HS_INFO("ExampleLayer::update");
+		if (Hoos::Input::IsKeyPressed(HS_KEY_TAB))
+			HS_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(Hoos::Event& event) override
 	{
-		HS_TRACE("{0}", event);
+		if (event.GetEventType() == Hoos::EventType::KeyPressed)
+		{
+			Hoos::KeyPressedEvent& e = (Hoos::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == HS_KEY_TAB)
+				HS_TRACE("Tab key is pressed (event)!");
+
+			HS_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 
